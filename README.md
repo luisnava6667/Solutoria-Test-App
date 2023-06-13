@@ -10,12 +10,16 @@ Este repositorio contiene una aplicación web desarrollada con Next.js, que perm
 
 La aplicación estará disponible en 
 
+![image](https://github.com/luisnava6667/Solutoria-Test-App/assets/88040918/c66c324b-c073-49a0-9f62-537fb7ba9308)
+![image](https://github.com/luisnava6667/Solutoria-Test-App/assets/88040918/82f0fcd3-58a8-4bc0-9936-fb94e95f2b06)
+![image](https://github.com/luisnava6667/Solutoria-Test-App/assets/88040918/73cbc0b5-66b0-4dfe-a835-035f349701d9)
+
 
 # Instalación
 
 1. Clona el repositorio:
 ```
-   git clone 
+   git clone https://github.com/luisnava6667/Solutoria-Test-App
 ```
 
 2. Ve al directorio del proyecto:
