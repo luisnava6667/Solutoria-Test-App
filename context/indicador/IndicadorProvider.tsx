@@ -1,5 +1,5 @@
 import { IndicadorProps } from '@/interfaces'
-import { FC, useEffect, useReducer } from 'react'
+import { FC,  useEffect, useReducer } from 'react'
 import { IndicadorContext } from './IndicadorContext'
 import { indicadorReducer } from './indicadorReducer'
 import { indicadorApi } from '@/api'

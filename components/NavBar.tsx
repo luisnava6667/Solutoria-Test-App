@@ -29,7 +29,7 @@ export const NavBar: FC<Props> = ({ indicadores, setFiltro, filtro }) => {
  
   useEffect(() => {
     setFiltro(filteredIndicadores)
-  }, [codigo, unidad, fechaIndicador, setFiltro, filteredIndicadores])
+  }, [codigo, unidad, fechaIndicador])
   return (
     <div className='lg:flex md:w-full gap-3  md:justify-evenly font-semibold text-lg justify-self-center'>
       <div className='md:flex grid gap-3 items-center px-10 mb-2'>

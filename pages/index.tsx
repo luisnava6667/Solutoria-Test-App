@@ -10,11 +10,11 @@ export default function Home() {
   const [filtro, setFiltro] = useState([] as IndicadorProps[] | [])
   const [cargando, setCargando] = useState(true)
   useEffect(() => {
+    getAllIndicadores()
     setTimeout(() => {
       setCargando(false)
     }, 4000)
-    getAllIndicadores()
-  }, [setFiltro])
+  }, [])
   return (
     <div className={`flex min-h-screen flex-col items-center`}>
       <Link href='/' className='cursor-pointer flex items-center my-4'>
