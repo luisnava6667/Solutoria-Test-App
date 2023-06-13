@@ -6,9 +6,10 @@
 </div>
 
 # Características
-Este repositorio contiene una aplicación web desarrollada con Next.js, que permite crear, editar, eliminar y listar indicadores del mercado. la cual esta desarrollada con las siguientes tecnologías: TailwindCSS, MongoDB, Next.js, React.js, Docker, Docker Compose.
+Este repositorio contiene una aplicación web desarrollada con Next.js, que permite crear, editar, eliminar y listar indicadores del mercado. la cual esta desarrollada con las siguientes tecnologías: TailwindCSS, MongoDB, Next.js, React.js, Docker, Docker Compose. Se reailizo el deploy en Vercel
 
-La aplicación estará disponible en 
+La aplicación estará disponible en [http://solutoria-test-app.vercel.app](https://solutoria-test-app.vercel.app/)
+
 
 ![image](https://github.com/luisnava6667/Solutoria-Test-App/assets/88040918/c66c324b-c073-49a0-9f62-537fb7ba9308)
 ![image](https://github.com/luisnava6667/Solutoria-Test-App/assets/88040918/82f0fcd3-58a8-4bc0-9936-fb94e95f2b06)
