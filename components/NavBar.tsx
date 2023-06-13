@@ -10,6 +10,8 @@ export const NavBar: FC<Props> = ({ indicadores, setFiltro, filtro }) => {
   const [codigo, setCodigo] = useState('')
   const [unidad, setUnidad] = useState('')
   const [fechaIndicador, setFechaIndicador] = useState('')
+  console.log(codigo);
+  
 
   const handlerCodigo = (e: ChangeEvent<HTMLSelectElement>) => {
     setCodigo(e.target.value)
@@ -25,19 +27,15 @@ export const NavBar: FC<Props> = ({ indicadores, setFiltro, filtro }) => {
       const fechaMatch = indicador.fechaIndicador.includes(fechaIndicador)
       const codigoMatch = indicador.codigoIndicador.includes(codigo)
       const unidadMedidaMatch = indicador.unidadMedidaIndicador.includes(unidad)
-      if (fechaMatch && codigoMatch && unidadMedidaMatch) {
-        return fechaMatch && codigoMatch && unidadMedidaMatch
-      } else {
-        return indicador
-      }
+      return fechaMatch && codigoMatch && unidadMedidaMatch
     })
 
     setFiltro(filteredIndicadores)
-  }, [indicadores, fechaIndicador, codigo, unidad])
+  }, [codigo, fechaIndicador, indicadores, unidad])
   return (
     <div className='lg:flex md:w-full gap-3  md:justify-evenly font-semibold text-lg justify-self-center'>
-      <div className='md:flex grid gap-3 items-center px-10 mb-2'>
-        <label htmlFor='fecha' className='md:w-1/2'>
+      <div className='md:flex grid items-center px-10 mb-2 gap-2'>
+        <label htmlFor='fecha' className='text-xl'>
           Fecha:
         </label>
         <input
@@ -49,8 +47,8 @@ export const NavBar: FC<Props> = ({ indicadores, setFiltro, filtro }) => {
         />
       </div>
 
-      <div className='md:flex grid gap-3 items-center px-10 mb-2'>
-        <label htmlFor='codigo' className='md:w-1/2'>
+      <div className='md:flex grid items-center px-10 mb-2 gap-2'>
+        <label htmlFor='codigo' className='text-xl'>
           Codigo de indicador:
         </label>
         <select
@@ -70,8 +68,8 @@ export const NavBar: FC<Props> = ({ indicadores, setFiltro, filtro }) => {
           ))}
         </select>
       </div>
-      <div className='md:flex grid gap-3 items-center px-10 mb-2'>
-        <label htmlFor='medida' className='md:w-1/2'>
+      <div className='md:flex grid items-center px-10 mb-2 gap-2'>
+        <label htmlFor='medida' className='text-xl'>
           Unidad de medida:
         </label>
         <select

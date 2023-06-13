@@ -24,7 +24,7 @@ export const Formulario: FC = () => {
   }
 
   return (
-    <div className='sm:px-36  grid mt-11'>
+    <div className='sm:px-36  grid mt-11 w-full'>
       <h2 className='text-center text-2xl uppercase font-bold'>
         Agregar Indicador
       </h2>
@@ -32,10 +32,10 @@ export const Formulario: FC = () => {
         initialValues={initialValues}
         validationSchema={validationSchema}
         onSubmit={onSubmit}
-        className={` w-full mx-auto my-0 px-0 py-10  `}>
+        className={` w-full mx-auto my-0  py-10  `}>
         <Form>
-          <div className='grid mb-4 w-full'>
-            <label htmlFor='nombreIndicador' className='text-xl '>
+          <div className='grid mb-4 w-full px-5'>
+            <label htmlFor='nombreIndicador' className='text-xl font-semibold'>
               Nombre del Indicador:
             </label>
             <Field
@@ -56,11 +56,15 @@ export const Formulario: FC = () => {
             <ErrorMessage
               name='nombreIndicador'
               component='div'
-              className='error-message'
+              className='text-lg text-red-500 font-bold pl-3'
             />
           </div>
-          <div className='grid mb-4'>
-            <label htmlFor='unidadMedidaIndicador'>Unidad de Medida</label>
+          <div className='grid mb-4 px-5'>
+            <label
+              htmlFor='unidadMedidaIndicador'
+              className='text-xl font-semibold'>
+              Unidad de Medida
+            </label>
             <Field
               as='select'
               name='unidadMedidaIndicador'
@@ -76,11 +80,13 @@ export const Formulario: FC = () => {
             <ErrorMessage
               name='unidadMedidaIndicador'
               component='div'
-              className='error-message'
+              className='text-lg text-red-500 font-bold pl-3'
             />
           </div>
-          <div className='grid mb-4'>
-            <label htmlFor='valorIndicador'>Valor de Indicador</label>
+          <div className='grid mb-4 px-5'>
+            <label htmlFor='valorIndicador' className='text-xl font-semibold'>
+              Valor de Indicador:
+            </label>
             <Field
               type='number'
               name='valorIndicador'
@@ -90,11 +96,13 @@ export const Formulario: FC = () => {
             <ErrorMessage
               name='valorIndicador'
               component='div'
-              className='error-message'
+              className='text-lg text-red-500 font-bold pl-3'
             />
           </div>
-          <div className='grid mb-4'>
-            <label htmlFor='fechaIndicador'>Fecha del Indicador</label>
+          <div className='grid mb-4 px-5'>
+            <label htmlFor='fechaIndicador' className='text-xl font-semibold'>
+              Fecha del Indicador:
+            </label>
             <Field
               type='date'
               name='fechaIndicador'
@@ -104,21 +112,21 @@ export const Formulario: FC = () => {
             <ErrorMessage
               name='fechaIndicador'
               component='div'
-              className='error-message'
+              className='text-lg text-red-500 font-bold pl-3'
             />
           </div>
-          <div className='grid md:flex w-full justify-items-center gap-4 mt-10'>
-            <button
-              type='submit'
-              className='bg-blue-500 w-4/5 md:w-1/2  sm:p-2 p-4 rounded-lg text-white uppercase hover:bg-blue-700 transition duration-700 font-semibold '>
-              Agregar Indicador
-            </button>
+          <div className='grid md:flex w-full justify-items-center gap-4 mt-10 px-5 md:px-24'>
             <Link
               href='/'
               className='flex items-center justify-center w-4/5 md:w-1/2  sm:p-2 p-4  bg-red-700  text-white transition duration-700 hover:bg-red-900 rounded-lg font-semibold  uppercase cursor-pointer'>
               <IoClose size={25} />
               Cancelar
             </Link>
+            <button
+              type='submit'
+              className='bg-blue-500 w-4/5 md:w-1/2  sm:p-2 p-4 rounded-lg text-white uppercase hover:bg-blue-700 transition duration-700 font-semibold '>
+              Agregar Indicador
+            </button>
           </div>
         </Form>
       </Formik>

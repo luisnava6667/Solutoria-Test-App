@@ -5,10 +5,16 @@ import { IndicadorContext } from '@/context/indicador'
 import { IndicadorProps } from '@/interfaces'
 import Image from 'next/image'
 import Link from 'next/link'
+import { useRouter } from 'next/router'
 export default function Home() {
   const { indicadores, getAllIndicadores } = useContext(IndicadorContext)
   const [filtro, setFiltro] = useState([] as IndicadorProps[] | [])
   const [cargando, setCargando] = useState(true)
+  const router = useRouter()
+
+  const handleRefresh = () => {
+    window.location.reload()
+  }
   useEffect(() => {
     getAllIndicadores()
     setTimeout(() => {
@@ -17,7 +23,10 @@ export default function Home() {
   }, [])
   return (
     <div className={`flex min-h-screen flex-col items-center`}>
-      <Link href='/' className='cursor-pointer flex items-center my-4'>
+      <Link
+        href='/'
+        className='cursor-pointer flex items-center my-4'
+        onClick={handleRefresh}>
         <Image src='/solutoria.png' alt='Solutoria' width={100} height={100} />
         <h2
           className=' 

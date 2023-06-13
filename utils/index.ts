@@ -14,7 +14,6 @@ export const codeAndNameSelector: Indicador[] = [
   { nombre: 'UNIDAD DE FOMENTO (UF)', codigo: 'UF' },
   { nombre: 'UNIDAD TRIBUTARIA MENSUAL (UTM)', codigo: 'UTM' }
 
-  // Agrega más indicadores aquí según tus necesidades
 ]
 export const initialValues = {
   nombreIndicador: '' as NombreIndicador,
@@ -28,6 +27,14 @@ export const validationSchema = Yup.object().shape({
   unidadMedidaIndicador: Yup.string().required(
     'Unidad de medida del indicador es requerida'
   ),
-  valorIndicador: Yup.number().required('Valor del indicador es requerido'),
-  fechaIndicador: Yup.string().required('Fecha del indicador es requerida')
+  valorIndicador: Yup.number()
+    .required('Valor del indicador es requerido')
+    .test(
+      'validacion-float',
+      'El valor debe ser mayor que 0',
+      (value) => value > 0
+    ),
+  fechaIndicador: Yup.date()
+    .required('Fecha del indicador es requerida')
+    .max(new Date(), 'La fecha no puede ser mayor a la actual')
 })

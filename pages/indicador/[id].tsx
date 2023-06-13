@@ -8,6 +8,8 @@ import { dbIndicadores } from '@/database'
 import { Formik, Form, Field, ErrorMessage } from 'formik'
 import * as Yup from 'yup'
 import { IoClose } from 'react-icons/io5'
+import Link from 'next/link'
+import Image from 'next/image'
 
 interface Props {
   indicador: IndicadorProps
@@ -30,15 +32,39 @@ const IndicatorPageById: FC<Props> = ({ indicador }) => {
     router.back()
   }
   const validationSchema = Yup.object().shape({
-    valorIndicador: Yup.number().required('Valor del indicador es requerido'),
-    fechaIndicador: Yup.string().required('Nombre del indicador es requerido')
+    valorIndicador: Yup.number()
+      .required('Valor del indicador es requerido')
+      .test(
+        'validacion-float',
+        'El valor debe ser mayor que 0',
+        (value) => value > 0
+      ),
+    fechaIndicador: Yup.date()
+      .required('Fecha del indicador es requerida')
+      .max(new Date(), 'La fecha no puede ser mayor a la actual')
   })
   const handleBack = (e: any) => {
     e.preventDefault()
     router.back()
   }
   return (
-    <div className='p-12 bg-gray-300 h-screen w-full  '>
+    <div className='px-12 bg-gray-300 h-screen w-full'>
+      <div className='grid justify-items-center mb-5 pt-5'>
+        <Link href='/' className='cursor-pointer flex items-center'>
+          <Image
+            src='/solutoria.png'
+            alt='Solutoria'
+            width={100}
+            height={100}
+          />
+          <h2
+            className=' 
+          text-2xl sm:text-5xl  font-bold text-center text-blue-400 
+          '>
+            Solutoria Test{' '}
+          </h2>
+        </Link>
+      </div>
       <div className='sm:px-36  grid'>
         <h2 className='text-center text-2xl uppercase font-bold'>
           Editar Indicador
@@ -50,7 +76,9 @@ const IndicatorPageById: FC<Props> = ({ indicador }) => {
           className={` w-full mx-auto my-0 px-0 py-10  `}>
           <Form>
             <div className='grid mb-4 w-full'>
-              <label htmlFor='nombreIndicador' className='text-xl '>
+              <label
+                htmlFor='nombreIndicador'
+                className='text-xl font-semibold'>
                 Nombre del Indicador:
               </label>
               <Field
@@ -62,7 +90,9 @@ const IndicatorPageById: FC<Props> = ({ indicador }) => {
               />
             </div>
             <div className='grid mb-4 w-full'>
-              <label htmlFor='nombreIndicador' className='text-xl '>
+              <label
+                htmlFor='nombreIndicador'
+                className='text-xl font-semibold'>
                 Unidad de Medida:
               </label>
               <Field
@@ -72,14 +102,11 @@ const IndicatorPageById: FC<Props> = ({ indicador }) => {
                 id='unidadMedidaIndicador'
                 className='border rounded-md p-2 w-full'
               />
-              <ErrorMessage
-                name='unidadMedidaIndicador'
-                component='div'
-                className='error-message'
-              />
             </div>
             <div className='grid mb-4 w-full'>
-              <label htmlFor='nombreIndicador' className='text-xl '>
+              <label
+                htmlFor='nombreIndicador'
+                className='text-xl font-semibold'>
                 Valor Indicado:
               </label>
               <Field
@@ -92,11 +119,13 @@ const IndicatorPageById: FC<Props> = ({ indicador }) => {
               <ErrorMessage
                 name='valorIndicador'
                 component='div'
-                className='error-message'
+                className='text-lg text-red-500 font-bold pl-3'
               />
             </div>
             <div className='grid mb-4 w-full'>
-              <label htmlFor='nombreIndicador' className='text-xl '>
+              <label
+                htmlFor='nombreIndicador'
+                className='text-xl font-semibold'>
                 Fecha del Indicador:
               </label>
               <Field
@@ -107,21 +136,21 @@ const IndicatorPageById: FC<Props> = ({ indicador }) => {
                 className='border rounded-md p-2 w-full'
               />
               <ErrorMessage
-                name='valorIndicador'
+                name='fechaIndicador'
                 component='div'
-                className='error-message'
+                className='text-lg text-red-500 font-bold pl-3'
               />
             </div>
-            <div className='flex w-full justify-evenly'>
-              <button
-                className='flex items-center justify-center w-4/5 md:w-1/3  sm:p-2 p-4  bg-red-700  text-white transition duration-700 hover:bg-red-900 rounded-lg font-semibold  uppercase cursor-pointer'
-                onClick={handleBack}>
+            <div className='grid md:flex w-full justify-items-center gap-4 mt-10 px-5 md:px-24'>
+              <Link
+                href='/'
+                className='flex items-center justify-center w-4/5 md:w-1/2  sm:p-2 p-4  bg-red-700  text-white transition duration-700 hover:bg-red-900 rounded-lg font-semibold  uppercase cursor-pointer'>
                 <IoClose size={25} />
                 Cancelar
-              </button>
+              </Link>
               <button
                 type='submit'
-                className='bg-blue-500 hover:bg-blue-700 text-white  py-2 px-4  w-4/5 md:w-1/3 rounded-lg font-semibold  uppercase cursor-pointer transition duration-700'>
+                className='bg-blue-500 w-4/5 md:w-1/2  sm:p-2 p-4 rounded-lg text-white uppercase hover:bg-blue-700 transition duration-700 font-semibold '>
                 Guardar
               </button>
             </div>
