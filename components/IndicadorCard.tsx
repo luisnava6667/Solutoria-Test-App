@@ -3,11 +3,11 @@ import { FC, useContext } from 'react'
 import { BiTrash, BiPencil } from 'react-icons/bi'
 import { IndicadorProps } from '../interfaces/indicador'
 import { useRouter } from 'next/router'
+import Link from 'next/link'
 interface Props {
   indicador: IndicadorProps
-
 }
-export const IndicadorCard: FC<Props> = ({ indicador,  }) => {
+export const IndicadorCard: FC<Props> = ({ indicador }) => {
   const {
     _id: id,
     nombreIndicador,
@@ -41,14 +41,12 @@ export const IndicadorCard: FC<Props> = ({ indicador,  }) => {
         </p>
       </div>
       <div className='flex w-full gap-2'>
-        <button
-          className='rounded-lg flex w-1/2  items-center justify-center gap-2 bg-green-700 p-1 h-10 hover:bg-green-900 transition duration-700 cursor-pointer'
-          onClick={() => {
-            router.push(`/indicador/${id}`)
-          }}>
+        <Link
+          href={`/indicador/${id}`}
+          className='rounded-lg flex w-1/2  items-center justify-center gap-2 bg-green-700 p-1 h-10 hover:bg-green-900 transition duration-700 cursor-pointer'>
           <BiPencil />
           Editar
-        </button>
+        </Link>
         <div
           className='rounded-lg flex w-1/2 items-center justify-center gap-2  bg-red-700 p-1 h-10 hover:bg-red-900 transition duration-700 cursor-pointer'
           onClick={() => deleteIndicador(id!)}>

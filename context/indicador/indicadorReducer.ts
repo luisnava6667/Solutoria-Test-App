@@ -5,7 +5,6 @@ type IndicadorActionType =
   | { type: '[Inidicador] New-Indicador'; payload: IndicadorProps }
   | { type: '[Inidicador] Delete-Indicador'; payload: number | string }
   | { type: '[Inidicador] Update-Indicador'; payload: IndicadorProps }
-
 export const indicadorReducer = (
   state: IndicadorState,
   action: IndicadorActionType
@@ -16,7 +15,6 @@ export const indicadorReducer = (
         ...state,
         indicadores: action.payload
       }
-
     case '[Inidicador] New-Indicador':
       return {
         ...state,

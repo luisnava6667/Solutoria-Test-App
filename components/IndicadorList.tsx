@@ -1,16 +1,13 @@
-import { IndicadorContext } from '@/context/indicador'
 import { IndicadorCard } from './IndicadorCard'
 import { useContext, useEffect, useState, CSSProperties, FC } from 'react'
 import { PuffLoader } from 'react-spinners'
 import { IndicadorProps } from '@/interfaces'
-import { NavBar } from './NavBar'
 interface Props {
   indicadores: IndicadorProps[]
   cargando: boolean
 }
 export const IndicadorList: FC<Props> = ({ cargando, indicadores }) => {
-  
-  return (
+    return (
     <div className='m-10'>
       {cargando ? (
         <div

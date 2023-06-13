@@ -56,9 +56,7 @@ const indicadorSchema = new Schema({
     type: String,
     default: 'mindicador.cl'
   },
-  // tags: [{ type: String }]
 })
-// indicadorSchema.index({ title: 'text', tags: 'text' })
 const IndicadorModel: Model<IndicadorProps> =
   mongoose.models.Indicador || model('Indicador', indicadorSchema)
 export default IndicadorModel

@@ -1,7 +1,6 @@
 import { IndicadorProps } from '@/interfaces'
 import { codeAndNameSelector } from '@/utils'
 import { FC, useState, ChangeEvent, useEffect } from 'react'
-import { IndicadorList } from './IndicadorList'
 interface Props {
   indicadores: IndicadorProps[]
   filtro: IndicadorProps[]

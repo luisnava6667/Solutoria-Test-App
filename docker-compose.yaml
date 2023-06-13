@@ -1,5 +1,5 @@
 services:
-  teslodb:
+  solutoria:
     image: mongo:5.0.0
     container_name: solutoria-db
     ports:

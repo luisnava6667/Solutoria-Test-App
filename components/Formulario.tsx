@@ -1,28 +1,14 @@
 import { FC, useContext, useEffect, useState } from 'react'
 import { codeAndNameSelector, initialValues, validationSchema } from '@/utils'
 import { IoClose } from 'react-icons/io5'
-import { useRouter } from 'next/router'
 import { IndicadorContext } from '@/context/indicador'
-import {
-  CodigoIndicador,
-  IndicadorProps,
-  NombreIndicador,
-  UnidadMedidaIndicador
-} from '@/interfaces'
+import { IndicadorProps } from '@/interfaces'
 import { Formik, Form, Field, ErrorMessage, FormikHelpers } from 'formik'
 import { toast } from 'react-toastify'
+import Link from 'next/link'
 
-interface Props {
-  id?: string | undefined
-}
-export const Formulario: FC<Props> = ({ id }) => {
+export const Formulario: FC = () => {
   const { addNewIndicador } = useContext(IndicadorContext)
-
-  const router = useRouter()
-  const handleBack = (e: any) => {
-    e.preventDefault()
-    router.back()
-  }
   const onSubmit = (
     values: IndicadorProps,
     { resetForm }: FormikHelpers<IndicadorProps>
@@ -30,8 +16,6 @@ export const Formulario: FC<Props> = ({ id }) => {
     const codigo = codeAndNameSelector.find(
       (indicador) => indicador.nombre === values.nombreIndicador
     )
-    console.log(codigo)
-
     values.codigoIndicador = codigo!.codigo
     console.log(values)
     toast.success('Indicador agregado correctamente')
@@ -40,7 +24,7 @@ export const Formulario: FC<Props> = ({ id }) => {
   }
 
   return (
-    <div className='sm:px-36  grid'>
+    <div className='sm:px-36  grid mt-11'>
       <h2 className='text-center text-2xl uppercase font-bold'>
         Agregar Indicador
       </h2>
@@ -75,7 +59,6 @@ export const Formulario: FC<Props> = ({ id }) => {
               className='error-message'
             />
           </div>
-
           <div className='grid mb-4'>
             <label htmlFor='unidadMedidaIndicador'>Unidad de Medida</label>
             <Field
@@ -127,20 +110,15 @@ export const Formulario: FC<Props> = ({ id }) => {
           <div className='grid md:flex w-full justify-items-center gap-4 mt-10'>
             <button
               type='submit'
-              className='bg-blue-500 w-4/5 md:w-1/3  sm:p-2 p-4 rounded-lg text-white uppercase hover:bg-blue-700 transition duration-700 font-semibold '>
-              AgregarIndicador
+              className='bg-blue-500 w-4/5 md:w-1/2  sm:p-2 p-4 rounded-lg text-white uppercase hover:bg-blue-700 transition duration-700 font-semibold '>
+              Agregar Indicador
             </button>
-            <button
-              className='flex items-center justify-center w-4/5 md:w-1/3  sm:p-2 p-4  bg-red-700  text-white transition duration-700 hover:bg-red-900 rounded-lg font-semibold  uppercase cursor-pointer'
-              onClick={handleBack}>
+            <Link
+              href='/'
+              className='flex items-center justify-center w-4/5 md:w-1/2  sm:p-2 p-4  bg-red-700  text-white transition duration-700 hover:bg-red-900 rounded-lg font-semibold  uppercase cursor-pointer'>
               <IoClose size={25} />
               Cancelar
-            </button>
-
-            <button
-              className='flex items-center justify-center w-4/5 md:w-1/3  sm:p-2 p-4  bg-slate-500  text-white transition duration-700 hover:bg-slate-900 rounded-lg font-semibold  uppercase cursor-pointer'
-              onClick={()=>{}}
-            ></button>
+            </Link>
           </div>
         </Form>
       </Formik>

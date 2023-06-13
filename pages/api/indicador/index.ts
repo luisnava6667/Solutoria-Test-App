@@ -9,7 +9,6 @@ export default function handle(
   res: NextApiResponse<Data>
 ) {
   const { id} = req.query;
- 
   
   switch (req.method) {
     case 'GET':

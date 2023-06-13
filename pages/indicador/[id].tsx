@@ -16,6 +16,7 @@ const IndicatorPageById: FC<Props> = ({ indicador }) => {
   const { updateIndicador } = useContext(IndicadorContext)
   const router = useRouter()
   const initialValues = {
+    _id: indicador._id,
     nombreIndicador: indicador.nombreIndicador,
     codigoIndicador: indicador.codigoIndicador,
     unidadMedidaIndicador: indicador.unidadMedidaIndicador,

@@ -4,7 +4,6 @@ import { IndicadorContext } from './IndicadorContext'
 import { indicadorReducer } from './indicadorReducer'
 import { indicadorApi } from '@/api'
 import { toast } from 'react-toastify'
-import axios from 'axios'
 
 export interface IndicadorState {
   indicadores: IndicadorProps[]
@@ -37,8 +36,6 @@ export const IndicadorProvider: FC<ProviderProps> = ({ children }) => {
     const { data } = await indicadorApi.get<IndicadorProps[]>('/indicador')
     dispatch({ type: '[Inidicador] Get-Indicadores', payload: data })
   }
-
-  // deleteIndicador
   const deleteIndicador = async (id: number | string) => {
     try {
       dispatch({ type: '[Inidicador] Delete-Indicador', payload: id })
@@ -59,7 +56,6 @@ export const IndicadorProvider: FC<ProviderProps> = ({ children }) => {
         indicador
       )
       dispatch({ type: '[Inidicador] Update-Indicador', payload: data })
-
       toast.success('Indicador Actualizado')
     } catch (error) {
       console.log(error)
