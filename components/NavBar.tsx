@@ -20,16 +20,20 @@ export const NavBar: FC<Props> = ({ indicadores, setFiltro, filtro }) => {
   const handlerFecha = (e: ChangeEvent<HTMLInputElement>) => {
     setFechaIndicador(e.target.value)
   }
-  const filteredIndicadores = indicadores.filter((indicador) => {
-    const fechaMatch = indicador.fechaIndicador.includes(fechaIndicador)
-    const codigoMatch = indicador.codigoIndicador.includes(codigo)
-    const unidadMedidaMatch = indicador.unidadMedidaIndicador.includes(unidad)
-    return fechaMatch && codigoMatch && unidadMedidaMatch
-  })
- 
   useEffect(() => {
+    const filteredIndicadores = indicadores.filter((indicador) => {
+      const fechaMatch = indicador.fechaIndicador.includes(fechaIndicador)
+      const codigoMatch = indicador.codigoIndicador.includes(codigo)
+      const unidadMedidaMatch = indicador.unidadMedidaIndicador.includes(unidad)
+      if (fechaMatch && codigoMatch && unidadMedidaMatch) {
+        return fechaMatch && codigoMatch && unidadMedidaMatch
+      } else {
+        return indicador
+      }
+    })
+
     setFiltro(filteredIndicadores)
-  }, [codigo, unidad, fechaIndicador])
+  }, [indicadores, fechaIndicador, codigo, unidad])
   return (
     <div className='lg:flex md:w-full gap-3  md:justify-evenly font-semibold text-lg justify-self-center'>
       <div className='md:flex grid gap-3 items-center px-10 mb-2'>
